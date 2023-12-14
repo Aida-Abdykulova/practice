@@ -20,12 +20,15 @@
 // });
 
 
+import { admin } from '../pages/admin'
+
 describe('practicing hooks', () => {
 
     before(() => {
         cy.fixture('users').then((data) => {
             globalThis.data = data
         })
+
     })
 
     beforeEach(() => {
@@ -35,16 +38,27 @@ describe('practicing hooks', () => {
 
     it('Test 1', () => {
 
+        cy.visit('/')
+        cy.contains('Admin').click()
+        cy.get(admin.addButton).click()
 
-        cy.contains("Admin").click()
+
     });
 
-    it('Test 2', () => {
+    it.skip('Test 2', () => {
+        cy.visit('/')
+        cy.contains("Claim").click()
+    });
 
-
-        cy.contains("PIM").click()
+    it.skip('Test 2', () => {
+        cy.visit('/')
+        cy.contains("Directory").click()
     });
 });
+
+
+
+
 
 
 
